@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="likes">#6CE8FE</color>
+    <color name="view">#FE8C6C</color>
+    <color name="comment">#AA6CFE</color>
+    <color name="download">#E44C4C</color>
+
+
+</resources>
