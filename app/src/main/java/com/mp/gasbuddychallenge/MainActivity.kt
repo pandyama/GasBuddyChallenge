@@ -1,5 +1,7 @@
 package com.mp.gasbuddychallenge
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -53,6 +55,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        pixabay.setOnClickListener{
+            pixabay()
+        }
+
         //toggle between Linear layout view and Grid layout view when user switches the toggle button
         toggle.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener{button, isChecked ->
             if(isChecked){
@@ -78,6 +84,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(context, 3)  //call recyclerview and change its layout to Gridlayout with 3 columns
     }
 
+    private fun pixabay(){
+
+        var url = "https://pixabay.com"
+        var uri = Uri.parse(url)
+
+        var i = Intent(Intent.ACTION_VIEW)
+        i.setData(uri)
+        startActivity(i)
+    }
 
     //fetchImage makes API call to pixabay source and retrieves images found from the user entered keyword
     private fun fetchImage() {
