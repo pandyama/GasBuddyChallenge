@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val imageSearch: EditText = search
-        Toast.makeText(applicationContext, "Enter something to look pics for and press enter", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Enter photos to look for", Toast.LENGTH_LONG).show()
 
         //below code is for listening to a click event and looking for ENTER key being pressed
         imageSearch.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
@@ -55,29 +55,28 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        pixabay.setOnClickListener{
+        pixabay.setOnClickListener{ // onclick listener for the pixabay logo which takes user to pixabay.com - This is with regards to referencing Pixabay for using the free API3
             pixabay()
         }
 
         //toggle between Linear layout view and Grid layout view when user switches the toggle button
-        toggle.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener{button, isChecked ->
+        toggle.setOnCheckedChangeListener { button, isChecked ->
             if(isChecked){
                 println("Nothing")
                 toggle.setText("Linear View")
                 setLinear()
-            }
-            else{
+            } else{
                 //onResume()
                 toggle.setText("Grid View")
                 setGrid()
                 println("nothing")
             }
-        })
+        }
 
     }
 
     private fun setLinear(){
-        recyclerView.layoutManager = LinearLayoutManager(context) //call recyclerview and change its layout manager to Linear layour
+        recyclerView.layoutManager = LinearLayoutManager(context)              //call recyclerview and change its layout manager to Linear layour
     }
 
     private fun setGrid(){
@@ -98,12 +97,12 @@ class MainActivity : AppCompatActivity() {
     private fun fetchImage() {
         var search = search.text.toString()                                                             //user entered keyword
 
-        val url = "https://pixabay.com/api/?key=17028607-1eb3c33d1b6253c843777324f&q=${search}&per_page=25"    //url for API
+        val url = "https://pixabay.com/api/?key=17028607-1eb3c33d1b6253c843777324f&q=${search}&per_page=50"    //url for API
         val request = Request.Builder().url(url).build()                                             //Request builder using the URL
         val client = OkHttpClient()                                                                           //OkHttpClient that will make the API call using request object from above
         val call = client.newCall(request)                                                              //call object
 
-        call.enqueue(object : Callback {                                                                     //enqueue method schedules the request
+        call.enqueue(object : Callback {                                                                     //enqueue method schedules the request since Android does not allow execute on main thread
             override fun onFailure(call: Call, e: IOException) {                                            //If request fails callback goes here
                 Toast.makeText(applicationContext, "Request failed, check your internet connection", Toast.LENGTH_LONG).show()
             }
@@ -113,9 +112,13 @@ class MainActivity : AppCompatActivity() {
                 val gson = GsonBuilder().create()                                          //GSON helps with converting response data to class variables
                 val imageFeed = gson.fromJson(body, Image::class.java)                    //conversion happens here where "body" is converted to list of images from data class Image below
 
-
                 runOnUiThread {                                                                   //runOnUiThread needs to be called in order to show changes on the main UI
-                    recyclerView.adapter = RecyclerAdapter(imageFeed.hits, context)              //recycler adapter instantiated here and sending list of images and current context
+                    if(imageFeed.hits.size != 0){
+                        recyclerView.adapter = RecyclerAdapter(imageFeed.hits, context)              //recycler adapter instantiated here and sending list of images and current context
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "Please check your spelling", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
 
@@ -137,7 +140,9 @@ data class imageInfo(
     var downloads: Number?,
     var comments: Number?,
     var views: Number?,
-    var user: String?
+    var user: String?,
+    var tags: String?,
+    var userImageURL: String?
 )
 
 // Sample Response object from Pixabay API

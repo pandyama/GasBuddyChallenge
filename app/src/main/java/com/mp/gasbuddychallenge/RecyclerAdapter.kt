@@ -52,6 +52,9 @@ class RecyclerAdapter(private var images: List<imageInfo>, val context: Context)
                 intent.putExtra("Likes", items.likes.toString())
                 intent.putExtra("Comment", items.comments.toString())
                 intent.putExtra("Downloads", items.downloads.toString())
+                intent.putExtra("Tags",items.tags.toString())
+                intent.putExtra("UserImage", items.userImageURL.toString())
+                intent.putExtra("user", items.user.toString())
                 itemView.context.startActivity(intent)
             }
 

@@ -15,11 +15,13 @@ class imagedetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_imagedetails)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Image details"
-        actionbar.setDisplayHomeAsUpEnabled(true)
 
         var bundle = intent.extras
+
+        val actionbar = supportActionBar
+        actionbar!!.title = "${bundle!!.getString("Tags")}"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
 
         viewsCount.setText(bundle!!.getString("Views").toString())
         likesCount.setText(bundle!!.getString("Likes").toString())
@@ -29,17 +31,20 @@ class imagedetails : AppCompatActivity() {
         var url = bundle!!.getString("Image").toString()
         var uri = Uri.parse(url)
 
+        var url2 = bundle!!.getString("UserImage").toString()
+        var uri2 = Uri.parse(url2)
+
         Glide.with(this)
             .load(uri)
             .into(imageView)
 
-        Toast.makeText(this, "Likes, Views, Comments, Downloads", Toast.LENGTH_LONG).show()
+        Glide.with(this)
+            .load(uri2)
+            .into(userimg)
 
-        imageURL.setOnClickListener {
-            var i = Intent(Intent.ACTION_VIEW)
-            i.setData(uri)
-            startActivity(i)
-        }
+        detailsupload.setText("By - ${bundle!!.getString("user").toString()}")
+
+        Toast.makeText(this, "Likes, Views, Comments, Downloads", Toast.LENGTH_SHORT).show()
 
     }
 

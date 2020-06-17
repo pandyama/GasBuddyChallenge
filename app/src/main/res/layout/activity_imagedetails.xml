@@ -22,24 +22,6 @@
         android:background="#FFFFFF">
 
 
-        <Button
-            android:id="@+id/imageURL"
-            android:layout_width="106dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="4sp"
-            android:layout_marginBottom="4sp"
-            android:background="#2979FF"
-            android:fontFamily="@font/montserrat"
-            android:padding="3sp"
-            android:text="Go to Image"
-            android:elevation="10dp"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="1.0" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -229,6 +211,34 @@
             tools:srcCompat="@tools:sample/avatars" />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="407dp"
+        android:layout_height="670dp">
+
+        <TextView
+            android:id="@+id/detailsupload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.76" />
+
+        <ImageView
+            android:id="@+id/userimg"
+            android:layout_width="129dp"
+            android:layout_height="111dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.935"
+            tools:srcCompat="@tools:sample/avatars" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
