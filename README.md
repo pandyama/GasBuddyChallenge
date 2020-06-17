@@ -13,10 +13,10 @@ Features
 
 Below is the look of the app
 
+![1](https://github.com/pandyama/GasBuddyChallenge/blob/master/Capture1.PNG)
+---
+
 ![2](https://github.com/pandyama/GasBuddyChallenge/blob/master/Capture2.PNG)
 ---
 
 ![3](https://github.com/pandyama/GasBuddyChallenge/blob/master/Capture3.PNG)
----
-
-![4](https://github.com/pandyama/GasBuddyChallenge/blob/master/Capture4.PNG)
