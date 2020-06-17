@@ -8,7 +8,6 @@ Challenge
 
 Features
 - Allows user to switch between Linear view and Grid view
-- User can also go to image source url from image details page
 
 
 Below is the look of the app
