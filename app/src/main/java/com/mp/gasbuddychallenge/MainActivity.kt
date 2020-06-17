@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     private fun fetchImage() {
         var search = search.text.toString()                                                             //user entered keyword
 
-        val url = "https://pixabay.com/api/?key=17028607-1eb3c33d1b6253c843777324f&q=${search}&per_page=50"    //url for API
+        val url = "https://pixabay.com/api/?key=API_KEY_HERE&q=${search}&per_page=50"    //url for API
         val request = Request.Builder().url(url).build()                                             //Request builder using the URL
         val client = OkHttpClient()                                                                           //OkHttpClient that will make the API call using request object from above
         val call = client.newCall(request)                                                              //call object
